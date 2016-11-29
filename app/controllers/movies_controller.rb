@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @character = Character.new
 
     render("movies/show.html.erb")
   end
@@ -14,14 +15,7 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
 
-    save_status= @movie.save
-
-    if save_status==true
-      redirect_to("/movies")
-    else
-      render("movies/new.html.erb")
-    end
-
+    render("movies/new.html.erb")
   end
 
   def create
